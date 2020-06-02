@@ -22,4 +22,15 @@ describe('ButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display', () => {
+    expect(component.firstName).toBe('brian');
+    expect(component.lastName).toBe('cipriano');
+  });
+
+  // new test by ngentest
+  it('should run #ngOnInit()', async () => {
+    component.ngOnInit();
+  });
+  
 });

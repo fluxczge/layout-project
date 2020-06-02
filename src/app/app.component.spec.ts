@@ -1,35 +1,60 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+// tslint:disable
+import { CUSTOM_ELEMENTS_SCHEMA, Directive, Input, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
+
+@Directive({ selector: '[oneviewPermitted]' })
+class OneviewPermittedDirective {
+  @Input() oneviewPermitted;
+}
+
+@Pipe({name: 'translate'})
+class TranslatePipe implements PipeTransform {
+  transform(value) { return value; }
+}
+
+@Pipe({name: 'phoneNumber'})
+class PhoneNumberPipe implements PipeTransform {
+  transform(value) { return value; }
+}
+
+@Pipe({name: 'safeHtml'})
+class SafeHtmlPipe implements PipeTransform {
+  transform(value) { return value; }
+}
+
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let fixture;
+  let component;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      imports: [ FormsModule, ReactiveFormsModule ],
       declarations: [
-        AppComponent
+        AppComponent,
+        TranslatePipe, PhoneNumberPipe, SafeHtmlPipe,
+        OneviewPermittedDirective
       ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
+      providers: [
+
+      ]
+    }).overrideComponent(AppComponent, {
+
     }).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;
   });
 
-  it(`should have as title 'layout-project'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('layout-project');
+  afterEach(() => {
+    component.ngOnDestroy = function() {};
+    fixture.destroy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('layout-project app is running!');
+  it('should run #constructor()', async () => {
+    expect(component).toBeTruthy();
   });
+
 });

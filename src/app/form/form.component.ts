@@ -26,8 +26,6 @@ export class FormComponent implements OnInit {
   }
 
   submitPerson() {
-    console.log(this.personForm.value);
-
     this.p1.push({
       id: this.p1.length,
       firstName: this.personForm.value.firstName,
