@@ -1,1 +1,12 @@
-<p>form works!</p>
+<h1>Form Component</h1>
+<ul>
+    <li *ngFor="let person of p1">
+        {{person.id}}: {{person.firstName}} {{person.lastName}}
+    </li>
+    <!-- <li>{{p2.id}}: {{p2.firstName}} {{p2.lastName}}</li> -->
+</ul>
+<form [formGroup]="personForm" (ngSubmit)="submitPerson()">
+    <div class="blocker">First Name:<input type="text" formControlName="firstName"></div>
+    <div class="blocker">Last Name:<input type="text" formControlName="lastName"></div>
+    <button type="submit" class="submitter">Submit</button>
+</form>
