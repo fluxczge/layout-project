@@ -32,5 +32,5 @@ describe('ButtonComponent', () => {
   it('should run #ngOnInit()', async () => {
     component.ngOnInit();
   });
-  
+
 });

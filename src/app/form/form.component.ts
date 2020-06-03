@@ -1,4 +1,4 @@
-import { Person } from './../person';
+import { Person } from '../models/person';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 

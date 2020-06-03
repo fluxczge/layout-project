@@ -1,0 +1,15 @@
+<h1>Comment Component</h1>
+<form [formGroup]="feedForm" (ngSubmit)="submitPost()">
+    <div class="blocker">Name:<input type="text" formControlName="feedName"></div>
+    <div class="blocker">Comment:<textarea formControlName="feedPost">hehe</textarea></div>
+    <button type="submit" class="submitter">Submit</button>
+</form>
+
+<div class="commentSection">
+    <ul>
+        <li *ngFor="let post of postList">
+            <p>{{post.postName}} {{post.postDate}}</p>
+            <p>{{[post.postFeed]}}</p>
+        </li>
+    </ul>
+</div>

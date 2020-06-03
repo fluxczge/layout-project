@@ -15,4 +15,8 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  doThis() {
+    this.firstName = 'newfirst';
+    this.lastName = 'newlast';
+  }
 }
